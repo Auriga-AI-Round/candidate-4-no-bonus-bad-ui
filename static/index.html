@@ -1,0 +1,15 @@
+<!-- Minimal, unstyled operational page. No landing/marketing page, no analytics. -->
+<html>
+<body>
+<h1>appointments</h1>
+<table border=1>
+<tr><td>id</td><td>patient</td><td>doctor</td><td>time</td></tr>
+</table>
+<script>
+fetch('/api/appointments/list').then(r=>r.json()).then(d=>{
+  var t=document.querySelector('table');
+  (d||[]).forEach(a=>{t.innerHTML+='<tr><td>'+a.id+'</td><td>'+a.patient_id+'</td><td>'+a.doctor_id+'</td><td>'+a.start_time+'</td></tr>'});
+});
+</script>
+</body>
+</html>
